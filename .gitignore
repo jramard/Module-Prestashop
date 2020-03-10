@@ -1,0 +1,10 @@
+# Ignore everything:
+*
+
+# Except for the themes directories:
+!modules/test/*
+!modules/test/classes/*
+!modules/test/controllers/admin/*
+!modules/test/models/*
+!modules/test/views/templates/admin/*
+!modules/test/views/templates/hooks/front/*
