@@ -1,6 +1,6 @@
 <?php
 
-class TestProduct extends ObjectModel
+class JulienRamardProduct extends ObjectModel
 {
     public $id;
     public $product_id;
@@ -9,8 +9,8 @@ class TestProduct extends ObjectModel
     public $position;
 
     public static $definition = array(
-        'table' => 'test_testproduct',
-        'primary' => 'id_testproduct',
+        'table' => 'julienramard_julienramardproduct',
+        'primary' => 'id_julienramardproduct',
         'multishop' => false,
         'fields' => array(
             'product_id' => array(

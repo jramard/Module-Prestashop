@@ -4,12 +4,13 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-require_once('models/TestProduct.php');
+require_once('models/JulienRamardProduct.php');
 
-class Test extends Module
+class JulienRamard extends Module
 {
     private $hookList = array(
         'actionAdminControllerSetMedia',
+        'header',
         'displayLeftColumnProduct',
         'displayRightColumnProduct',
         'displayFooterProduct'
@@ -17,11 +18,11 @@ class Test extends Module
 
     public function __construct()
     {
-        $this->name = 'test';
+        $this->name = 'julienramard';
         $this->version = '1.0.0';
         $this->tab = 'administration';
         $this->author = 'Juster';
-        $this->displayName = $this->l('Test module');
+        $this->displayName = $this->l('JulienRamard module');
         $this->description = $this->l('Learning module for IUT LPDEV 2020.');
         $this->confirmUninstall = $this->l('Are you sure to uninstall this module?');
 
@@ -39,6 +40,8 @@ class Test extends Module
         $this->shopId = (int)$this->context->shop->id;
         $this->langId = (int)$this->context->language->id;
         $this->langIso = pSQL($this->context->language->iso_code);
+
+        // $this->registerHook('header');
     }
 
     public function install()
@@ -105,13 +108,13 @@ class Test extends Module
     {
         $queryList = array();
 
-        $queryList[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.$this->name.'_testproduct` (
-            `id_testproduct` INT(11) NOT NULL AUTO_INCREMENT,
+        $queryList[] = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.$this->name.'_julienramardproduct` (
+            `id_julienramardproduct` INT(11) NOT NULL AUTO_INCREMENT,
             `product_id` INT(11) NOT NULL,
             `commentary` VARCHAR(255) NULL,
             `is_enabled` TINYINT(1) NOT NULL,
             `position` INT(11) NOT NULL,
-            PRIMARY KEY (`id_testproduct`)
+            PRIMARY KEY (`id_julienramardproduct`)
         ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8';
 
         foreach ((array)$queryList as $query) {
@@ -161,7 +164,7 @@ class Test extends Module
     protected function _uninstallSql()
     {
         $tableList = array(
-            'testproduct'
+            'julienramardproduct'
         );
 
         foreach ((array)$tableList as $table) {
@@ -194,46 +197,89 @@ class Test extends Module
         $this->context->controller->addJS($this->_path.'views/js/back.js');
     }
 
+    public function hookHeader($params)
+    {
+        if (Tools::getValue('controller') == 'product') {
+            $this->context->controller->addCSS($this->_path.'views/css/front.css');
+            $this->context->controller->addJS($this->_path.'views/js/front.js');
+        }
+    }
+
     public function hookDisplayLeftColumnProduct($params)
     {
-
+        return $this->displayCommentaryList(
+            (int)Tools::getValue('id_product'),
+            (int)JulienRamardProduct::POSITION_LEFT
+        );
     }
 
     public function hookDisplayRightColumnProduct($params)
     {
-        // Récupération de l'id produit
-        $productId = Tools::getValue('id_product');
-
-        try {
-            $commentaryList = TestProduct::getByIdAndPosition(
-                (int)$productId,
-                TestProduct::POSITION_RIGHT
-            );
-            // ddd($commentaryList);
-            if (!is_array($commentaryList)) {
-                $commentaryList = array();
-            }
-
-            $this->context->smarty->assign(array(
-                'commentaryList' => (array)$commentaryList
-            ));
-
-            return $this->displayBlock();
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+        return $this->displayCommentaryList(
+            (int)Tools::getValue('id_product'),
+            (int)JulienRamardProduct::POSITION_RIGHT
+        );
     }
 
     public function hookDisplayFooterProduct($params)
     {
-
+        return $this->displayCommentaryList(
+            (int)Tools::getValue('id_product'),
+            (int)JulienRamardProduct::POSITION_FOOTER
+        );
     }
 
-    private function displayBlock()
+    // private function displayBlock()
+    // {
+    //     return $this->display(
+    //         _PS_MODULE_DIR_.$this->name,
+    //         'views/templates/hooks/front/display_block.tpl'
+    //     );
+    // }
+
+    /**
+     * @param $productId
+     * @param $position
+     * @return mixed
+     */
+    private function displayCommentaryList($productId, $position)
     {
-        return $this->display(
-            _PS_MODULE_DIR_.$this->name,
-            'views/templates/hooks/front/display_block.tpl'
-        );
+        try {
+            if (!is_numeric($productId)) {
+                throw new Exception(
+                    __METHOD__.'<br>'.
+                    'The $productId must be an integer, '
+                    .gettype($productId).' given.'
+                );
+            }
+
+            if (!is_numeric($position)) {
+                throw new Exception(
+                    __METHOD__.'<br>'.
+                    'The $position must be an integer, '
+                    .gettype($position).' given.'
+                );
+            }
+
+            $commentaryList = JulienRamardProduct::getByIdAndPosition(
+                (int)$productId,
+                (int)$position
+            );
+
+            if (!is_array($commentaryList)) {
+                $commentaryList = array();
+            }
+
+            $this->context->smarty->assign([
+                'commentaryList' => (array)$commentaryList
+            ]);
+
+            return $this->display(
+                _PS_MODULE_DIR_.$this->name,
+                'views/templates/hooks/front/display_block.tpl'
+            );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
     }
 }

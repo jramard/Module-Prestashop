@@ -2,8 +2,8 @@
     <div class="panel">
         <div class="panel-header">
             <h4>
-                {l s='Commentary' mod='test'}
-                #{$commentary.id_testproduct|intval}
+                {l s='Commentary' mod='julienramard'}
+                #{$commentary.id_julienramardproduct|intval}
             </h4>
         </div>
         <div class="panel-body">

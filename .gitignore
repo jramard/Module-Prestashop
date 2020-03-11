@@ -2,9 +2,11 @@
 *
 
 # Except for the themes directories:
-!modules/test/*
-!modules/test/classes/*
-!modules/test/controllers/admin/*
-!modules/test/models/*
-!modules/test/views/templates/admin/*
-!modules/test/views/templates/hooks/front/*
+!modules/julienramard/*
+!modules/julienramard/classes/*
+!modules/julienramard/controllers/admin/*
+!modules/julienramard/models/*
+!modules/julienramard/views/css/*
+!modules/julienramard/views/js/*
+!modules/julienramard/views/templates/admin/*
+!modules/julienramard/views/templates/hooks/front/*

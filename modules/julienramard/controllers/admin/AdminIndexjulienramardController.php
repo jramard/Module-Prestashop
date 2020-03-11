@@ -1,8 +1,8 @@
 <?php
 
-require_once(dirname(__FILE__).'/../../models/TestProduct.php');
+require_once(dirname(__FILE__) . '/../../models/JulienRamardProduct.php');
 
-class AdminIndextestController extends ModuleAdminController 
+class AdminIndexjulienramardController extends ModuleAdminController
 {
     public function __construct()
     {
@@ -22,10 +22,10 @@ class AdminIndextestController extends ModuleAdminController
         $is_enabled = null;
         $position = null;
 
-        $productIdList = TestProduct::getProductIdList();
+        $productIdList = JulienRamardProduct::getProductIdList();
 
-        if (Tools::isSubmit('testform')) {
-            $model = new TestProduct();
+        if (Tools::isSubmit('julienramardform')) {
+            $model = new JulienRamardProduct();
             $model->product_id = Tools::getValue('product_id');
             $model->commentary = Tools::getValue('commentary');
             $model->is_enabled = Tools::getValue('is_enabled');
