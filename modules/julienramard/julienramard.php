@@ -114,6 +114,7 @@ class JulienRamard extends Module
             `commentary` VARCHAR(255) NULL,
             `is_enabled` TINYINT(1) NOT NULL,
             `position` INT(11) NOT NULL,
+            `border_size` INT(11) NULL,
             PRIMARY KEY (`id_julienramardproduct`)
         ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8';
 

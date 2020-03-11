@@ -21,6 +21,7 @@ class AdminIndexjulienramardController extends ModuleAdminController
         $commentary = null;
         $is_enabled = null;
         $position = null;
+        $border_size = null;
 
         $productIdList = JulienRamardProduct::getProductIdList();
 
@@ -30,6 +31,7 @@ class AdminIndexjulienramardController extends ModuleAdminController
             $model->commentary = Tools::getValue('commentary');
             $model->is_enabled = Tools::getValue('is_enabled');
             $model->position = Tools::getValue('position');
+            $model->border_size = Tools::getValue('border_size');
 
             if ((bool)$model->isValid() && 
                 (bool)$model->save()
@@ -55,6 +57,7 @@ class AdminIndexjulienramardController extends ModuleAdminController
             'commentary' => $commentary,
             'is_enabled' => (bool)$is_enabled,
             'position' => $position,
+            'border_size' => $border_size,
             'productIdList' => $productIdList
         ));
 

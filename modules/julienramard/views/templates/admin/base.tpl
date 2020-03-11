@@ -152,6 +152,33 @@
                     </div>
                 </div>
             </div>
+
+            {if in_array('border_size', $error)}
+                <div class="alert alert-danger">
+                    <p>{l s='Incorrect border size!' mod='julienramard'}</p>
+                </div>
+            {/if}
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>
+                        {l s='Border size' mod='julienramard'}
+                    </h4>
+                    <div class="form-group">
+                        <div class="margin-form">
+                            <input
+                                type="number"
+                                name="border_size"
+                                id="border_size"
+                                class="form-control"
+                                value="{$border_size}"
+                                min="0"
+                                max="25"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <footer class="panel-footer">

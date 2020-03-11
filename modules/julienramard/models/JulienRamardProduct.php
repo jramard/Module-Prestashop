@@ -7,6 +7,7 @@ class JulienRamardProduct extends ObjectModel
     public $commentary;
     public $is_enabled;
     public $position;
+    public $border_size;
 
     public static $definition = array(
         'table' => 'julienramard_julienramardproduct',
@@ -20,7 +21,7 @@ class JulienRamardProduct extends ObjectModel
             ),
             'commentary' => array(
                 'type' => self::TYPE_STRING,
-                'validate' => 'isGenericName',
+                'validate' => 'isString',
                 'size' => 255,
                 'required' => false
             ),
@@ -33,6 +34,11 @@ class JulienRamardProduct extends ObjectModel
                 'type' => self::TYPE_INT,
                 'validate' => 'isUnsignedInt',
                 'required' => true
+            ),
+            'border_size' => array(
+                'type' => self::TYPE_INT,
+                'validate' => 'isUnsignedInt',
+                'required' => false
             )
         )
     );
@@ -78,6 +84,15 @@ class JulienRamardProduct extends ObjectModel
         if (!Validate::isInt($this->position)) {
             $is_success = false;
             $this->errorList[] = 'position';
+        }
+
+        if (!is_null($this->border_size) && (
+            !Validate::isInt($this->border_size) ||
+            $this->border_size < 0 ||
+            $this->border_size > 25
+        )) {
+            $is_success = false;
+            $this->errorList[] = 'border_size';
         }
 
         return (bool)$is_success;
