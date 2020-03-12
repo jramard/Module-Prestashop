@@ -121,6 +121,7 @@ class JulienRamard extends Module
             `text_color` VARCHAR(25) NULL,
             `text_align` VARCHAR(25) NULL,
             `font_family` VARCHAR(25) NULL,
+            `minimum_product_price` DECIMAL(10,2) NOT NULL,
             PRIMARY KEY (`id_julienramardproduct`)
         ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8';
 
@@ -268,9 +269,10 @@ class JulienRamard extends Module
                 );
             }
 
-            $commentaryList = JulienRamardProduct::getByIdAndPosition(
+            $commentaryList = JulienRamardProduct::getByIdAndPositionAndPrice(
                 (int)$productId,
-                (int)$position
+                (int)$position,
+                Product::getPriceStatic($productId)
             );
 
             if (!is_array($commentaryList)) {

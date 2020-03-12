@@ -153,6 +153,34 @@
                 </div>
             </div>
 
+            {if in_array('minimum_product_price', $error)}
+                <div class="alert alert-danger">
+                    <p>{l s='Incorrect product price!' mod='julienramard'}</p>
+                </div>
+            {/if}
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>
+                        {l s='Minimum product price' mod='julienramard'}
+                    </h4>
+                    <div class="form-group">
+                        <div class="margin-form">
+                            <input
+                                type="number"
+                                name="minimum_product_price"
+                                id="minimum_product_price"
+                                class="form-control"
+                                value="{$minimum_product_price|floatval}"
+                                min="0"
+                                max="10000"
+                                step="0.01"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {if in_array('border_size', $error)}
                 <div class="alert alert-danger">
                     <p>{l s='Incorrect border size!' mod='julienramard'}</p>
@@ -171,7 +199,7 @@
                                 name="border_size"
                                 id="border_size"
                                 class="form-control"
-                                value="{$border_size}"
+                                value="{$border_size|intval}"
                                 min="0"
                                 max="25"
                             />
@@ -217,7 +245,7 @@
                                 name="border_radius"
                                 id="border_radius"
                                 class="form-control"
-                                value="{$border_radius}"
+                                value="{$border_radius|intval}"
                                 min="0"
                                 max="25"
                             />

@@ -14,6 +14,7 @@ class JulienRamardProduct extends ObjectModel
     public $text_color;
     public $text_align;
     public $font_family;
+    public $minimum_product_price;
 
     public static $definition = array(
         'table' => 'julienramard_julienramardproduct',
@@ -80,6 +81,12 @@ class JulienRamardProduct extends ObjectModel
                 'validate' => 'isGenericName',
                 'size' => 25,
                 'required' => false
+            ),
+            'minimum_product_price' => array(
+                'type' => self::TYPE_FLOAT,
+                'validate' => 'isPrice',
+                'size' => 10,
+                'required' => true
             )
         )
     );
@@ -166,6 +173,11 @@ class JulienRamardProduct extends ObjectModel
             $this->errorList[] = 'border_size';
         }
 
+        if (!Validate::isPrice($this->minimum_product_price)) {
+            $is_success = false;
+            $this->errorList[] = 'minimum_product_price';
+        }
+
         return (bool)$is_success;
     }
 
@@ -196,7 +208,7 @@ class JulienRamardProduct extends ObjectModel
         return DB::getInstance()->executeS($query);
     }
 
-    public static function getByIdAndPosition($id, $position)
+    public static function getByIdAndPositionAndPrice($id, $position, $price)
     {
         if (!is_numeric($id)) {
             throw new Exception(
@@ -214,12 +226,21 @@ class JulienRamardProduct extends ObjectModel
             );
         }
 
+        if (!Validate::isPrice($price)) {
+            throw new Exception(
+                'Le prix n\'est pas correct ! <br>'.
+                __METHOD__.'<br>'.
+                gettype($price).' envoyé !'
+            );
+        }
+
         $query = 'SELECT * 
             FROM `'._DB_PREFIX_.self::$definition['table'].'`
             WHERE `product_id` = '.(int)$id.
             ' AND `is_enabled` = 1
             AND `commentary` != \'\'
-            AND `position` = '.(int)$position;
+            AND `position` = '.(int)$position.
+            ' AND `minimum_product_price` < '.(float)$price;
 
         return Db::getInstance()->executeS($query);
     }

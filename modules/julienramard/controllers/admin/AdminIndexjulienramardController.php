@@ -28,6 +28,7 @@ class AdminIndexjulienramardController extends ModuleAdminController
         $text_color = null;
         $text_align = null;
         $font_family = null;
+        $minimum_product_price = null;
 
         $productIdList = JulienRamardProduct::getProductIdList();
         $borderColorList = JulienRamardProduct::BORDER_COLOR_LIST;
@@ -49,6 +50,7 @@ class AdminIndexjulienramardController extends ModuleAdminController
             $model->text_color = Tools::getValue('text_color');
             $model->text_align = Tools::getValue('text_align');
             $model->font_family = Tools::getValue('font_family');
+            $model->minimum_product_price = Tools::getValue('minimum_product_price');
 
             if ((bool)$model->isValid() && 
                 (bool)$model->save()
@@ -80,7 +82,8 @@ class AdminIndexjulienramardController extends ModuleAdminController
             'background_color' => $background_color,
             'text_color' => $text_color,
             'text_align' => $text_align,
-            '$font_family' => $font_family,
+            'font_family' => $font_family,
+            'minimum_product_price' => $minimum_product_price,
             'productIdList' => $productIdList,
             'borderColorList' => $borderColorList,
             'backgroundColorList' => $backgroundColorList,
