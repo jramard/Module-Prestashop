@@ -1,0 +1,17 @@
+.navOptions {
+    margin-bottom: 20px !important;
+}
+
+.toggleOptions {
+    cursor: pointer;
+}
+
+.mainOptions,
+.additionalOptions {
+    display: none;
+}
+
+.mainOptions.active,
+.additionalOptions.active {
+    display: block;
+}
