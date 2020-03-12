@@ -179,6 +179,152 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>
+                        {l s='Border color' mod='julienramard'}
+                    </h4>
+                    <div class="form-group">
+                        <div class="margin-form">
+                            <select
+                                    name="border_color"
+                                    id="border_color"
+                                    class="form-control">
+                                <option value="">
+                                    > {l s='Select a border color' mod='julienramard'}
+                                </option>
+                                {foreach $borderColorList as $borderColor}
+                                    <option value="{$borderColor}">
+                                        {$borderColor|capitalize}
+                                    </option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>
+                        {l s='Border radius' mod='julienramard'}
+                    </h4>
+                    <div class="form-group">
+                        <div class="margin-form">
+                            <input
+                                type="number"
+                                name="border_radius"
+                                id="border_radius"
+                                class="form-control"
+                                value="{$border_radius}"
+                                min="0"
+                                max="25"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>
+                        {l s='Background color' mod='julienramard'}
+                    </h4>
+                    <div class="form-group">
+                        <div class="margin-form">
+                            <select
+                                    name="background_color"
+                                    id="background_color"
+                                    class="form-control">
+                                <option value="">
+                                    > {l s='Select a background color' mod='julienramard'}
+                                </option>
+                                {foreach $backgroundColorList as $backgroundColor}
+                                    <option value="{$backgroundColor}">
+                                        {$backgroundColor|capitalize}
+                                    </option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>
+                        {l s='Text color' mod='julienramard'}
+                    </h4>
+                    <div class="form-group">
+                        <div class="margin-form">
+                            <select
+                                    name="text_color"
+                                    id="text_color"
+                                    class="form-control">
+                                <option value="">
+                                    > {l s='Select a text color' mod='julienramard'}
+                                </option>
+                                {foreach $textColorList as $textColor}
+                                    <option value="{$textColor}">
+                                        {$textColor|capitalize}
+                                    </option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>
+                        {l s='Text align' mod='julienramard'}
+                    </h4>
+                    <div class="form-group">
+                        <div class="margin-form">
+                            <select
+                                    name="text_align"
+                                    id="text_align"
+                                    class="form-control">
+                                <option value="">
+                                    > {l s='Select a text alignment' mod='julienramard'}
+                                </option>
+                                {foreach $textAlignList as $textAlign}
+                                    <option value="{$textAlign}">
+                                        {$textAlign|capitalize}
+                                    </option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>
+                        {l s='Font family' mod='julienramard'}
+                    </h4>
+                    <div class="form-group">
+                        <div class="margin-form">
+                            <select
+                                    name="font_family"
+                                    id="font_family"
+                                    class="form-control">
+                                <option value="">
+                                    > {l s='Select a font family' mod='julienramard'}
+                                </option>
+                                {foreach $fontFamilyList as $fontFamily}
+                                    <option value="{$fontFamily}">
+                                        {$fontFamily|capitalize}
+                                    </option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <footer class="panel-footer">

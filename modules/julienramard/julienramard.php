@@ -115,6 +115,12 @@ class JulienRamard extends Module
             `is_enabled` TINYINT(1) NOT NULL,
             `position` INT(11) NOT NULL,
             `border_size` INT(11) NULL,
+            `border_color` VARCHAR(25) NULL,
+            `border_radius` INT(11) NULL,
+            `background_color` VARCHAR(25) NULL,
+            `text_color` VARCHAR(25) NULL,
+            `text_align` VARCHAR(25) NULL,
+            `font_family` VARCHAR(25) NULL,
             PRIMARY KEY (`id_julienramardproduct`)
         ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8';
 

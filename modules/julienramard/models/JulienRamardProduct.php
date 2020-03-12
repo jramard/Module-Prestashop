@@ -8,6 +8,12 @@ class JulienRamardProduct extends ObjectModel
     public $is_enabled;
     public $position;
     public $border_size;
+    public $border_color;
+    public $border_radius;
+    public $background_color;
+    public $text_color;
+    public $text_align;
+    public $font_family;
 
     public static $definition = array(
         'table' => 'julienramard_julienramardproduct',
@@ -39,6 +45,41 @@ class JulienRamardProduct extends ObjectModel
                 'type' => self::TYPE_INT,
                 'validate' => 'isUnsignedInt',
                 'required' => false
+            ),
+            'border_color' => array(
+                'type' => self::TYPE_STRING,
+                'validate' => 'isGenericName',
+                'size' => 25,
+                'required' => false
+            ),
+            'border_radius' => array(
+                'type' => self::TYPE_INT,
+                'validate' => 'isUnsignedInt',
+                'required' => false
+            ),
+            'background_color' => array(
+                'type' => self::TYPE_STRING,
+                'validate' => 'isGenericName',
+                'size' => 25,
+                'required' => false
+            ),
+            'text_color' => array(
+                'type' => self::TYPE_STRING,
+                'validate' => 'isGenericName',
+                'size' => 25,
+                'required' => false
+            ),
+            'text_align' => array(
+                'type' => self::TYPE_STRING,
+                'validate' => 'isGenericName',
+                'size' => 25,
+                'required' => false
+            ),
+            'font_family' => array(
+                'type' => self::TYPE_STRING,
+                'validate' => 'isGenericName',
+                'size' => 25,
+                'required' => false
             )
         )
     );
@@ -46,6 +87,36 @@ class JulienRamardProduct extends ObjectModel
     const POSITION_LEFT = 1;
     const POSITION_RIGHT = 2;
     const POSITION_FOOTER = 3;
+
+    const BORDER_COLOR_LIST = [
+        'red',
+        'green',
+        'blue'
+    ];
+
+    const BACKGROUND_COLOR_LIST = [
+        'black',
+        'grey',
+        'white'
+    ];
+
+    const TEXT_COLOR_LIST = [
+        'black',
+        'grey',
+        'white'
+    ];
+
+    const TEXT_ALIGN_LIST = [
+        'left',
+        'center',
+        'right'
+    ];
+
+    const FONT_FAMILY_LIST = [
+        'consolas',
+        'tahoma',
+        'verdana'
+    ];
 
     private $errorList = array();
 

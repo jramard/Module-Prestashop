@@ -22,8 +22,19 @@ class AdminIndexjulienramardController extends ModuleAdminController
         $is_enabled = null;
         $position = null;
         $border_size = null;
+        $border_color = null;
+        $border_radius = null;
+        $background_color = null;
+        $text_color = null;
+        $text_align = null;
+        $font_family = null;
 
         $productIdList = JulienRamardProduct::getProductIdList();
+        $borderColorList = JulienRamardProduct::BORDER_COLOR_LIST;
+        $backgroundColorList = JulienRamardProduct::BACKGROUND_COLOR_LIST;
+        $textColorList = JulienRamardProduct::TEXT_COLOR_LIST;
+        $textAlignList = JulienRamardProduct::TEXT_ALIGN_LIST;
+        $fontFamilyList = JulienRamardProduct::FONT_FAMILY_LIST;
 
         if (Tools::isSubmit('julienramardform')) {
             $model = new JulienRamardProduct();
@@ -32,6 +43,12 @@ class AdminIndexjulienramardController extends ModuleAdminController
             $model->is_enabled = Tools::getValue('is_enabled');
             $model->position = Tools::getValue('position');
             $model->border_size = Tools::getValue('border_size');
+            $model->border_color = Tools::getValue('border_color');
+            $model->border_radius = Tools::getValue('border_radius');
+            $model->background_color = Tools::getValue('background_color');
+            $model->text_color = Tools::getValue('text_color');
+            $model->text_align = Tools::getValue('text_align');
+            $model->font_family = Tools::getValue('font_family');
 
             if ((bool)$model->isValid() && 
                 (bool)$model->save()
@@ -58,7 +75,18 @@ class AdminIndexjulienramardController extends ModuleAdminController
             'is_enabled' => (bool)$is_enabled,
             'position' => $position,
             'border_size' => $border_size,
-            'productIdList' => $productIdList
+            'border_color' => $border_color,
+            'border_radius' => $border_radius,
+            'background_color' => $background_color,
+            'text_color' => $text_color,
+            'text_align' => $text_align,
+            '$font_family' => $font_family,
+            'productIdList' => $productIdList,
+            'borderColorList' => $borderColorList,
+            'backgroundColorList' => $backgroundColorList,
+            'textColorList' => $textColorList,
+            'textAlignList' => $textAlignList,
+            'fontFamilyList' => $fontFamilyList,
         ));
 
         return $this->module->display(
