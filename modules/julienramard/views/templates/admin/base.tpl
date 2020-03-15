@@ -96,9 +96,7 @@
 
                 {if in_array('is_enabled', $error)}
                     <div class="alert alert-danger">
-                        <p>
-                            {l s='Valeur incorrecte, n\'essayez pas de tricher !' mod='julienramard'}
-                        </p>
+                        <p>{l s='Valeur incorrecte, n\'essayez pas de tricher !' mod='julienramard'}</p>
                     </div>
                 {/if}
 
@@ -227,6 +225,12 @@
                     </div>
                 </div>
 
+                {if in_array('border_color', $error)}
+                    <div class="alert alert-danger">
+                        <p>{l s='Incorrect border color!' mod='julienramard'}</p>
+                    </div>
+                {/if}
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>
@@ -253,6 +257,12 @@
                     </div>
                 </div>
 
+                {if in_array('border_radius', $error)}
+                    <div class="alert alert-danger">
+                        <p>{l s='Incorrect border radius!' mod='julienramard'}</p>
+                    </div>
+                {/if}
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>
@@ -273,6 +283,12 @@
                         </div>
                     </div>
                 </div>
+
+                {if in_array('background_color', $error)}
+                    <div class="alert alert-danger">
+                        <p>{l s='Incorrect background color!' mod='julienramard'}</p>
+                    </div>
+                {/if}
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -300,6 +316,12 @@
                     </div>
                 </div>
 
+                {if in_array('text_color', $error)}
+                    <div class="alert alert-danger">
+                        <p>{l s='Incorrect text color!' mod='julienramard'}</p>
+                    </div>
+                {/if}
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>
@@ -326,6 +348,12 @@
                     </div>
                 </div>
 
+                {if in_array('text_align', $error)}
+                    <div class="alert alert-danger">
+                        <p>{l s='Incorrect text alignment!' mod='julienramard'}</p>
+                    </div>
+                {/if}
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h4>
@@ -351,6 +379,12 @@
                         </div>
                     </div>
                 </div>
+
+                {if in_array('font_family', $error)}
+                    <div class="alert alert-danger">
+                        <p>{l s='Incorrect font family!' mod='julienramard'}</p>
+                    </div>
+                {/if}
 
                 <div class="row">
                     <div class="col-lg-12">

@@ -173,6 +173,55 @@ class JulienRamardProduct extends ObjectModel
             $this->errorList[] = 'border_size';
         }
 
+        if ($this->border_color && (
+                !(bool)Validate::isGenericName($this->border_color) ||
+                !in_array($this->font_family, self::BORDER_COLOR_LIST)
+            )) {
+            $is_success = false;
+            $this->errorList[] = 'border_color';
+        }
+
+        if (!is_null($this->border_radius) && (
+                !Validate::isInt($this->border_radius) ||
+                $this->border_radius < 0 ||
+                $this->border_radius > 25
+            )) {
+            $is_success = false;
+            $this->errorList[] = 'border_radius';
+        }
+
+        if ($this->background_color && (
+                !(bool)Validate::isGenericName($this->background_color) ||
+                !in_array($this->font_family, self::BACKGROUND_COLOR_LIST)
+            )) {
+            $is_success = false;
+            $this->errorList[] = 'background_color';
+        }
+
+        if ($this->text_color && (
+                !(bool)Validate::isGenericName($this->text_color) ||
+                !in_array($this->font_family, self::TEXT_COLOR_LIST)
+            )) {
+            $is_success = false;
+            $this->errorList[] = 'text_color';
+        }
+
+        if ($this->text_align && (
+                !(bool)Validate::isGenericName($this->text_align) ||
+                !in_array($this->font_family, self::TEXT_ALIGN_LIST)
+            )) {
+            $is_success = false;
+            $this->errorList[] = 'text_align';
+        }
+
+        if ($this->font_family && (
+                !(bool)Validate::isGenericName($this->font_family) ||
+                !in_array($this->font_family, self::FONT_FAMILY_LIST)
+            )) {
+            $is_success = false;
+            $this->errorList[] = 'font_family';
+        }
+
         if (!Validate::isPrice($this->minimum_product_price)) {
             $is_success = false;
             $this->errorList[] = 'minimum_product_price';
