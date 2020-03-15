@@ -31,13 +31,13 @@
 
             {if $is_success}
                 <div class="alert alert-success">
-                    <p>{l s='Les données ont bien été enregistrées !' mod='julienramard'}</p>
+                    <p>{l s='The data has been saved!' mod='julienramard'}</p>
                 </div>
             {/if}
 
             {if $has_error}
                 <div class="alert alert-danger">
-                    <p>{l s='Une erreur a été détectée !' mod='julienramard'}</p>
+                    <p>{l s='An error has occurred!' mod='julienramard'}</p>
                 </div>
             {/if}
 
@@ -45,7 +45,7 @@
 
                 {if in_array('product_id', $error)}
                     <div class="alert alert-danger">
-                        <p>{l s='Product ID incorrect, veuillez saisir un chiffre.' mod='julienramard'}</p>
+                        <p>{l s='Incorrect product ID, please enter a number.' mod='julienramard'}</p>
                     </div>
                 {/if}
 
@@ -96,7 +96,7 @@
 
                 {if in_array('is_enabled', $error)}
                     <div class="alert alert-danger">
-                        <p>{l s='Valeur incorrecte, n\'essayez pas de tricher !' mod='julienramard'}</p>
+                        <p>{l s='Incorrect value, don\'t try to cheat!' mod='julienramard'}</p>
                     </div>
                 {/if}
 
@@ -133,7 +133,7 @@
 
                 {if in_array('position', $error)}
                     <div class="alert alert-danger">
-                        <p>{l s='Position incorrecte.' mod='julienramard'}</p>
+                        <p>{l s='Incorrect position!' mod='julienramard'}</p>
                     </div>
                 {/if}
 
