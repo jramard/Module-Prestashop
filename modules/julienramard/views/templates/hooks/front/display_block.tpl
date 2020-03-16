@@ -1,6 +1,7 @@
 {foreach $commentaryList as $commentary}
     <div
         class="panel"
+        {strip}
         {if
             $commentary.border_size ||
             $commentary.border_color ||
@@ -31,6 +32,7 @@
             {/if}
         "
         {/if}
+        {/strip}
     >
         <div class="panel-header">
             <h4>

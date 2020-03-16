@@ -65,6 +65,9 @@ class AdminIndexjulienramardController extends ModuleAdminController
         // ddd($productIdList);
         // ppp($productIdList);
 
+        /**
+         * Assigns variables to Smarty.
+         */
         $this->context->smarty->assign(array(
             'controllerLink' => $this->context->link->getAdminLink(
                 Tools::getValue('controller')

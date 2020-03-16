@@ -149,21 +149,25 @@ class JulienRamardProduct extends ObjectModel
     {
         $is_success = true;
 
+        // Checks if Product ID is valid
         if (!Validate::isInt($this->product_id)) {
             $is_success = false;
             $this->errorList[] = 'product_id';
         }
 
+        // Checks if Enabled is valid
         if (!Validate::isBool($this->is_enabled)) {
             $is_success = false;
             $this->errorList[] = 'is_enabled';
         }
 
+        // Checks if Position is valid
         if (!Validate::isInt($this->position)) {
             $is_success = false;
             $this->errorList[] = 'position';
         }
 
+        // Checks if Border Size is valid
         if (!is_null($this->border_size) && (
             !Validate::isInt($this->border_size) ||
             $this->border_size < 0 ||
@@ -173,14 +177,16 @@ class JulienRamardProduct extends ObjectModel
             $this->errorList[] = 'border_size';
         }
 
+        // Checks if Border Color is valid
         if ($this->border_color && (
                 !(bool)Validate::isGenericName($this->border_color) ||
-                !in_array($this->font_family, self::BORDER_COLOR_LIST)
+                !in_array($this->border_color, self::BORDER_COLOR_LIST)
             )) {
             $is_success = false;
             $this->errorList[] = 'border_color';
         }
 
+        // Checks if Border Radius is valid
         if (!is_null($this->border_radius) && (
                 !Validate::isInt($this->border_radius) ||
                 $this->border_radius < 0 ||
@@ -190,30 +196,34 @@ class JulienRamardProduct extends ObjectModel
             $this->errorList[] = 'border_radius';
         }
 
+        // Checks if Background Color is valid
         if ($this->background_color && (
                 !(bool)Validate::isGenericName($this->background_color) ||
-                !in_array($this->font_family, self::BACKGROUND_COLOR_LIST)
+                !in_array($this->background_color, self::BACKGROUND_COLOR_LIST)
             )) {
             $is_success = false;
             $this->errorList[] = 'background_color';
         }
 
+        // Checks if Text Color is valid
         if ($this->text_color && (
                 !(bool)Validate::isGenericName($this->text_color) ||
-                !in_array($this->font_family, self::TEXT_COLOR_LIST)
+                !in_array($this->text_color, self::TEXT_COLOR_LIST)
             )) {
             $is_success = false;
             $this->errorList[] = 'text_color';
         }
 
+        // Checks if Text Alignment is valid
         if ($this->text_align && (
                 !(bool)Validate::isGenericName($this->text_align) ||
-                !in_array($this->font_family, self::TEXT_ALIGN_LIST)
+                !in_array($this->text_align, self::TEXT_ALIGN_LIST)
             )) {
             $is_success = false;
             $this->errorList[] = 'text_align';
         }
 
+        // Checks if Font Family is valid
         if ($this->font_family && (
                 !(bool)Validate::isGenericName($this->font_family) ||
                 !in_array($this->font_family, self::FONT_FAMILY_LIST)
@@ -222,6 +232,7 @@ class JulienRamardProduct extends ObjectModel
             $this->errorList[] = 'font_family';
         }
 
+        // Checks if Minimum Product Price is valid
         if (!Validate::isPrice($this->minimum_product_price)) {
             $is_success = false;
             $this->errorList[] = 'minimum_product_price';
@@ -250,6 +261,9 @@ class JulienRamardProduct extends ObjectModel
         return (array)$this->errorList;
     }
 
+    /**
+     * Gets the list of product ids.
+     */
     public static function getProductIdList()
     {
         $query = 'SELECT `id_product` FROM `'._DB_PREFIX_.'product`';
@@ -257,11 +271,14 @@ class JulienRamardProduct extends ObjectModel
         return DB::getInstance()->executeS($query);
     }
 
+    /**
+     * Gets the list of commentaries (with some parameters) corresponding to a product.
+     */
     public static function getByIdAndPositionAndPrice($id, $position, $price)
     {
         if (!is_numeric($id)) {
             throw new Exception(
-                'L\'id n\'est pas un type numérique ! <br>'.
+                'L\'id n\'est pas un type numérique !<br>'.
                 __METHOD__.'<br>'.
                 gettype($id).' envoyé !'
             );
@@ -269,7 +286,7 @@ class JulienRamardProduct extends ObjectModel
 
         if (!is_numeric($position)) {
             throw new Exception(
-                'La position n\'est pas un type numérique ! <br>'.
+                'La position n\'est pas un type numérique !<br>'.
                 __METHOD__.'<br>'.
                 gettype($position).' envoyé !'
             );
@@ -277,7 +294,7 @@ class JulienRamardProduct extends ObjectModel
 
         if (!Validate::isPrice($price)) {
             throw new Exception(
-                'Le prix n\'est pas correct ! <br>'.
+                'Le prix n\'est pas correct !<br>'.
                 __METHOD__.'<br>'.
                 gettype($price).' envoyé !'
             );

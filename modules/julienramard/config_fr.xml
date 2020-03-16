@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
 	<name>julienramard</name>
-	<displayName><![CDATA[JulienRamard module]]></displayName>
+	<displayName><![CDATA[Module JulienRamard]]></displayName>
 	<version><![CDATA[1.0.0]]></version>
-	<description><![CDATA[Learning module for IUT LPDEV 2020.]]></description>
-	<author><![CDATA[Juster]]></author>
+	<description><![CDATA[Module d&#039;apprentissage pour IUT LPDEV 2020.]]></description>
+	<author><![CDATA[Julien Ramard]]></author>
 	<tab><![CDATA[administration]]></tab>
-	<confirmUninstall><![CDATA[Are you sure to uninstall this module?]]></confirmUninstall>
+	<confirmUninstall><![CDATA[Êtes-vous sûr de vouloir désinstaller ce module ?]]></confirmUninstall>
 	<is_configurable>1</is_configurable>
 	<need_instance>0</need_instance>
 	<limited_countries></limited_countries>

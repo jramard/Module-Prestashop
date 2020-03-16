@@ -21,7 +21,7 @@ class JulienRamard extends Module
         $this->name = 'julienramard';
         $this->version = '1.0.0';
         $this->tab = 'administration';
-        $this->author = 'Juster';
+        $this->author = 'Julien Ramard';
         $this->displayName = $this->l('JulienRamard module');
         $this->description = $this->l('Learning module for IUT LPDEV 2020.');
         $this->confirmUninstall = $this->l('Are you sure to uninstall this module?');
@@ -41,7 +41,11 @@ class JulienRamard extends Module
         $this->langId = (int)$this->context->language->id;
         $this->langIso = pSQL($this->context->language->iso_code);
 
-        // $this->registerHook('header');
+        /**
+         * If you need to register a new hook
+         *
+         * $this->registerHook('hookName');
+         */
     }
 
     public function install()
@@ -104,6 +108,11 @@ class JulienRamard extends Module
         return true;
     }
 
+    /**
+     * Installs database tables.
+     *
+     * @return bool
+     */
     protected function _installSql()
     {
         $queryList = array();
@@ -236,14 +245,6 @@ class JulienRamard extends Module
             (int)JulienRamardProduct::POSITION_FOOTER
         );
     }
-
-    // private function displayBlock()
-    // {
-    //     return $this->display(
-    //         _PS_MODULE_DIR_.$this->name,
-    //         'views/templates/hooks/front/display_block.tpl'
-    //     );
-    // }
 
     /**
      * @param $productId
